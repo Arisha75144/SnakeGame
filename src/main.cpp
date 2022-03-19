@@ -1,10 +1,7 @@
-//
-// Created by Dmitry Morozov on 05.03.2022.
-//
 
 #include "main.h"
 
-
+using namespace sf;
 int main () {
 
     sf::RectangleShape square (sf::Vector2f (100, 100));
@@ -25,6 +22,14 @@ int main () {
             if (event.type == sf::Event::Closed) {
                 window.close ();
             }
+        if(Keyboard::isKeyPressed(Keyboard::Right))
+        {
+
+            square.move(1,0);
+            }
+        if(Keyboard::isKeyPressed(Keyboard::Left))  {
+            square.move(-1,0);
+            }
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Escape) {
                     window.close ();
@@ -36,7 +41,7 @@ int main () {
         square.setPosition (squarePosition);
 
         squarePosition.y += y_speed;
-        squarePosition.x += x_speed;;
+        squarePosition.x += x_speed;
 
         if (squarePosition.y < 0 || squarePosition.y + 100 > 600) {
             y_speed = -y_speed;
@@ -54,7 +59,3 @@ int main () {
         window.draw (square);
         window.display ();
     }
-
-
-    return 0;
-}
